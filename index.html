@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="carlosDamian.css">
     <link rel="icon" type="image/png" href="iconos/logo2.png">
-    <!-- Importamos la fuente Poppins de Google Fonts para un aspecto más moderno -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <!-- Importamos la fuente Poppins de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Añadimos Font Awesome para los iconos de estrellas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>FilmVerse | Descubre el universo cinematográfico</title>
 </head>
 
@@ -19,10 +20,10 @@
         <p class="navbar-title">Inicio</p>
         <p class="navbar-title">Películas</p>
         <p class="navbar-title">Series</p>
-        <p class="navbar-title">Favoritos</p>
+        <p class="navbar-title" id="favoritos-nav">Favoritos</p>
         <p class="navbar-title">Contacto</p>
     </nav>
-
+    
     <!-- Sección de héroe con buscador y mensaje de bienvenida -->
     <section class="contenedor-buscador">
         <div class="titulos-buscador">
@@ -34,12 +35,12 @@
             <button id="btn-buscar">Buscar</button>
         </div>
     </section>
-
+    
     <!-- Contenedor donde se mostrarán los resultados de búsqueda -->
     <section class="contenedor-resultados">
         <!-- Los resultados se insertan aquí dinámicamente mediante JavaScript -->
     </section>
-
+    
     <!-- Pie de página con enlaces y créditos -->
     <footer class="footer">
         <div class="footer-content">
@@ -57,9 +58,9 @@
             <p class="footer-attribution">Datos proporcionados por The Movie Database (TMDb).</p>
         </div>
     </footer>
-
-    <!-- Enlace al archivo JavaScript -->
+    
+    <!-- Enlace a los archivos JavaScript -->
     <script src="index.js"></script>
+    <script src="scriptCarlosDamian.js"></script>
 </body>
-
 </html>
