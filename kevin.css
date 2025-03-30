@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #171717;
+}
+
+.navbar{
+    background-color: #1d1c1c;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    height: 60px;
+    width: 100%;
+    gap: 30px;
+    position: fixed;
+}
+
+.navbar-title{
+    color: white;
+    cursor: pointer;
+}
+
+.navbar-title:hover{
+    color: #cd4e3b;
+    transition: ease-in 0.3s;
+}
+
+.logo img {
+    width: 100px; 
+    height: auto; 
+    margin-left: 100px; 
+}
