@@ -35,3 +35,73 @@ body{
     height: auto; 
     margin-left: 100px; 
 }
+
+.contenedor-buscador{
+    background-image: url("imagenes/flow.jpg");
+    background-size: cover;
+    background-position: center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;   
+    background-attachment: fixed;
+    background-color: rgba(25, 25, 26, 0.5);
+    background-blend-mode: multiply; 
+    height: 450px;
+    width: 100%; 
+}
+
+.titulo-buscador{
+    color: white;
+    font-size: 50px;
+    padding-top: 7%;
+    margin-bottom: 0.3%;
+    margin-left: 14%;
+}
+
+.contenedor-buscador h2{
+    color: white;
+    font-size: 30px;
+    margin-bottom: 90px;
+    margin-left: 14%;
+}
+
+.inputs{
+    display: flex;
+    justify-content: center;
+    gap: 0; 
+}
+
+#input-busqueda{
+    width: 1000px;
+    height: 50px;
+    border-radius: 10px 0px 0px 10px;
+    border: none;
+    padding-right: 0;
+    padding-left: 35px;
+    font-size: medium;
+    min-width: fit-content;
+}
+
+#input-busqueda::placeholder{
+    padding-left: 5px;
+}
+
+#input-busqueda:focus{
+    outline: none;
+    border: none;
+}
+
+#btn-buscar{
+    background-image: linear-gradient(to right, #2153c0, #568dbd);
+    font-size: medium;  
+    color: white;
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    min-width: fit-content;
+}
+
+#btn-buscar:hover{
+    background-image: linear-gradient(to right, #6a11cb, #2575fc);
+}
