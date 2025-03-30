@@ -105,3 +105,83 @@ body{
 #btn-buscar:hover{
     background-image: linear-gradient(to right, #6a11cb, #2575fc);
 }
+
+.contenedor-resultados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 15px;;
+}
+
+.resultado {
+    display: flex;
+    flex-direction: row;
+    height: auto; 
+    width: 70%;     
+    margin: 10px; 
+    border-bottom: 2px solid #dad3d3;  
+    border-radius: 10px 10px 0 0; 
+    background-color: #1d1c1c; 
+    gap: 0;  
+    padding: 0;
+    margin-bottom: 15px; 
+}
+
+.portada {
+    width: 15%; 
+    min-width: auto; 
+    margin: 10px 0; 
+    margin-left: 1%;   
+    border-radius: 5px; 
+    gap: 0;  
+    padding: 0; 
+    cursor: pointer; 
+}
+
+.portada:hover {
+    transform: scale(1.05); 
+    transition: transform 0.3s ease-in; 
+}
+
+.informacion-pelicula{
+    color: rgb(209, 207, 207);
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.titulo{
+    font-size: 30px;
+    margin-bottom: 5px; 
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.titulo:hover{
+    text-decoration: underline;
+    transition: ease-in-out 0.3s;
+}   
+
+.fecha-lanzamiento{
+    margin-bottom: 20px; 
+}
+
+.genero{
+    font-size: 18px;
+    margin-bottom: 15px; 
+}
+
+.calificacion{
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.numero-votos{
+    font-size: 18px;
+    margin-bottom: 15px; 
+}
+
+.descripcion{
+    font-size: 16px;
+    margin-bottom: 15px; 
+}
