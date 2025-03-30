@@ -1,42 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="kevin.css">
-    <link rel="icon" type="image/png" href="iconos/logo2.png">  
-    <title>FilmVerse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="iconos/logo2.png">
+    <!-- Importamos la fuente Poppins de Google Fonts para un aspecto más moderno -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>FilmVerse | Descubre el universo cinematográfico</title>
 </head>
-<body>
 
-    <!-- Esto la barra de navegacion-->
+<body>
+    <!-- Barra de navegación fija en la parte superior -->
     <nav class="navbar">
-        <div class="logo"><img src="iconos/logo2.png"></img></div>
-            <p class="navbar-title">Inicio</p>
-            <p class="navbar-title">Favoritos</p>
-            <p class="navbar-title">Contacto</p>
-        </div>
+        <div class="logo"><img src="iconos/logo2.png" alt="Logo de FilmVerse"></div>
+        <p class="navbar-title">Inicio</p>
+        <p class="navbar-title">Películas</p>
+        <p class="navbar-title">Series</p>
+        <p class="navbar-title">Favoritos</p>
+        <p class="navbar-title">Contacto</p>
     </nav>
 
+    <!-- Sección de héroe con buscador y mensaje de bienvenida -->
     <section class="contenedor-buscador">
-        <!-- aqui puse los titulos-->
         <div class="titulos-buscador">
             <h1 class="titulo-buscador">Bienvenido a FilmVerse</h1>
-            <h2>Millones de películas, series y gente por descubrir. Explora ya.</h2>
+            <h2>Millones de películas, series y personas por descubrir. Explora ya.</h2>
         </div>
-        <!-- aqui puse los campus de entrada-->
         <div class="inputs">
             <input type="text" id="input-busqueda" placeholder="Escribe el nombre de una película o serie">
-            <button id="btn-buscar" onclick="buscarPelicula()">Buscar</button>
+            <button id="btn-buscar">Buscar</button>
         </div>
     </section>
 
+    <!-- Contenedor donde se mostrarán los resultados de búsqueda -->
     <section class="contenedor-resultados">
-        <!-- aqui insertan las tarjetas, no toquen que quema-->
+        <!-- Los resultados se insertan aquí dinámicamente mediante JavaScript -->
     </section>
 
-    <script src="scriptKevin.js"></script>
+    <!-- Pie de página con enlaces y créditos -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="iconos/logo2.png" alt="Logo de FilmVerse">
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Acerca de</a>
+                <a href="#" class="footer-link">Política de privacidad</a>
+                <a href="#" class="footer-link">Términos de uso</a>
+                <a href="#" class="footer-link">API</a>
+                <a href="#" class="footer-link">Contacto</a>
+            </div>
+            <p class="footer-copyright">© 2025 FilmVerse. Todos los derechos reservados.</p>
+            <p class="footer-attribution">Datos proporcionados por The Movie Database (TMDb).</p>
+        </div>
+    </footer>
 
+    <!-- Enlace al archivo JavaScript -->
+    <script src="index.js"></script>
 </body>
-    
+
 </html>
