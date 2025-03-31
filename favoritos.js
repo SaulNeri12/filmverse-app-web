@@ -1,4 +1,7 @@
 
+/**
+ * @author Carlos Damian
+ */
 
 // scriptCarlosDamian.js - Sistema de Favoritos
 document.addEventListener("DOMContentLoaded", () => {

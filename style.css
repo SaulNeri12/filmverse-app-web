@@ -489,3 +489,26 @@ body {
     align-items: center;
     margin-bottom: 10px;
 }
+
+.paginacion-botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--primary-dark);
+    margin-bottom: 5rem;
+}
+
+#btn-siguiente {
+    background-color: #3a4268;
+    padding: 20px 10px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    font-size: large;
+    transition: background-color 0.1s;
+}
+
+#btn-siguiente:hover {
+    background-color: #232942;
+}
