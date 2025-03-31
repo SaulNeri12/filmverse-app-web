@@ -1,4 +1,5 @@
 
+const contenedor = document.querySelector('.contenedor-resultados');
 
 const buscarPeliculasPopulares = async () => {
 
@@ -24,7 +25,7 @@ const buscarPeliculasPopulares = async () => {
 };
 
 function mostrarResultados(resultados) {
-    const contenedor = document.querySelector('.contenedor-resultados');
+
     contenedor.innerHTML = '';
 
     // Limitamos a 10 resultados para mejor rendimiento
@@ -86,6 +87,9 @@ function mostrarResultados(resultados) {
 
 document.addEventListener("DOMContentLoaded", async () => {
     const resultados = await buscarPeliculasPopulares();
+
+    // se oculata el boton de "ver mas" cuando inicia la pagina
+    //document.querySelector("#btn-siguiente").disabled = true;
 
     if (resultados.results) {
         mostrarResultados(resultados.results);

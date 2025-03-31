@@ -16,12 +16,17 @@ function mostrarCargando() {
 document.addEventListener('DOMContentLoaded', () => {
     const campoBusqueda = document.getElementById('input-busqueda');
     const botonBuscar = document.getElementById('btn-buscar');
+    const contenedor = document.querySelector('.contenedor-resultados');
+
+    // NOTE: Cuando se presiona el boton buscar, se limpian los resultados de busqueda 
+    // para solo mostrar los nuevos...
 
     // Buscar al hacer clic en el botón
     botonBuscar.addEventListener('click', () => {
         const consulta = campoBusqueda.value.trim();
         if (consulta) {
             mostrarCargando();
+            contenedor.innerHTML = "";
             buscarPelicula(consulta);
         }
     });
@@ -32,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const consulta = campoBusqueda.value.trim();
             if (consulta) {
                 mostrarCargando();
+                contenedor.innerHTML = "";
                 buscarPelicula(consulta);
             }
         }
@@ -48,16 +54,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Función principal para buscar películas a través de la API
-async function buscarPelicula(consulta) {
+async function buscarPelicula(consulta, pagina = 1) {
     try {
-        const respuesta = await fetch(API_URL + encodeURIComponent(consulta));
+
+        if (pagina < 1) {
+            throw new Error("Ocurrio una busqueda no valida, intente de nuevo...");
+        }
+
+        let urlObjetivo = (pagina > 1) 
+            ? (API_URL + encodeURIComponent(consulta) + "&page=" + pagina)
+            : (API_URL + encodeURIComponent(consulta));
+
+        //console.log(urlObjetivo)
+
+        const respuesta = await fetch(urlObjetivo);
         const datos = await respuesta.json();
 
         if (datos.results && datos.results.length > 0) {
-            mostrarResultados(datos.results);
+            // se muestran los resultados de busqueda pero no se eliminan los que ya 
+            // estan (a menos que se presione el boton buscar y no el "Ver Mas")
+            mostrarResultados(datos.results, false);
         } else {
             mostrarNoResultados(consulta);
         }
+
+        return datos;
     } catch (error) {
         mostrarError(error);
     }
@@ -65,9 +86,13 @@ async function buscarPelicula(consulta) {
 
 // Función para mostrar resultados de búsqueda
 
-function mostrarResultados(resultados) {
+function mostrarResultados(resultados, limpiarResultados = false) {
     const contenedor = document.querySelector('.contenedor-resultados');
-    contenedor.innerHTML = '';
+    
+    if (limpiarResultados) {
+        contenedor.innerHTML = '';
+        contenedor.setAttribute("data-page", "1");
+    }
 
     // Limitamos a 10 resultados para mejor rendimiento
     resultados.slice(0, 10).forEach(pelicula => {
@@ -214,3 +239,23 @@ function getGeneroNombre(genreId) {
 
     return generos[genreId] || 'Desconocido';
 }
+
+document.querySelector("#btn-siguiente").addEventListener("click", async () => {
+    const contenedor = document.querySelector('.contenedor-resultados');
+
+    let pagina = parseInt(contenedor.getAttribute("data-page"));
+
+    const consulta = document.querySelector("#input-busqueda").value.trim();
+
+    const nuevaPaginaResultados = await buscarPelicula(consulta, ++pagina);
+
+    const resultados = nuevaPaginaResultados.results;
+
+    //console.log(resultados)
+
+    if (resultados) {
+        mostrarResultados(resultados, false);
+    }
+
+    contenedor.setAttribute("data-page", pagina.toString())
+});
