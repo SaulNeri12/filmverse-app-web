@@ -64,6 +64,7 @@ async function buscarPelicula(consulta) {
 }
 
 // Función para mostrar resultados de búsqueda
+
 function mostrarResultados(resultados) {
     const contenedor = document.querySelector('.contenedor-resultados');
     contenedor.innerHTML = '';
@@ -72,6 +73,8 @@ function mostrarResultados(resultados) {
     resultados.slice(0, 10).forEach(pelicula => {
         const tarjeta = document.createElement('div');
         tarjeta.classList.add('resultado');
+        // Añadimos un ID único para la funcionalidad de favoritos
+        tarjeta.dataset.id = `${pelicula.media_type}-${pelicula.id}`;
 
         // Verificamos si hay imagen de portada, si no usamos imagen por defecto
         const imagen = pelicula.poster_path
