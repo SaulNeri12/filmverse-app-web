@@ -1,0 +1,491 @@
+/* Colores de la pagina, no tocar */
+:root {
+    --primary-dark: #0d0f1a;
+    --primary: #171b2e;
+    --primary-light: #232942;
+    --accent: #3a4268;
+    --text-primary: #f1f2f6;
+    --text-secondary: #b3b6c5;
+    --text-muted: #757991;
+    --gradient-start: #252a44;
+    --gradient-end: #383f66;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --transition: all 0.3s ease;
+    --glow-color: rgba(96, 120, 234, 0.7);
+}
+
+/* Estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Barra de navegación mejorada */
+.navbar {
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    gap: 40px;
+    position: fixed;
+    padding: 0 5%;
+    box-shadow: var(--shadow);
+    z-index: 100;
+    /* Asegura que la barra esté siempre por encima de otros elementos */
+}
+
+.navbar-title {
+    color: var(--text-primary);
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* Efecto de línea animada debajo de los títulos del navbar */
+.navbar-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    transition: var(--transition);
+}
+
+.navbar-title:hover {
+    color: var(--text-primary);
+}
+
+/* Animación para mostrar la línea al pasar el mouse */
+.navbar-title:hover::after {
+    width: 100%;
+}
+
+.logo img {
+    width: 110px;
+    height: auto;
+    margin-left: 0;
+}
+
+/* Sección de búsqueda con fondo */
+.contenedor-buscador {
+    background-image: url("imagenes/flow.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: rgba(13, 15, 26, 0.85);
+    /* Tono oscuro para mejorar legibilidad */
+    background-blend-mode: multiply;
+    /* Mezcla el fondo con el color para mejor contraste */
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+    /* Espacio para la barra de navegación fija */
+}
+
+.titulos-buscador {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo-buscador {
+    color: var(--text-primary);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    /* Sombra para mejorar legibilidad */
+}
+
+.contenedor-buscador h2 {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+/* Campo de búsqueda mejorado */
+.inputs {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    max-width: 800px;
+    position: relative;
+    /* Para posicionar el botón absolutamente */
+}
+
+#input-busqueda {
+    width: 100%;
+    height: 60px;
+    border-radius: 30px;
+    /* Esquinas redondeadas para aspecto moderno */
+    border: none;
+    padding: 0 30px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+#input-busqueda::placeholder {
+    color: var(--text-muted);
+}
+
+/* Efecto al enfocar el campo de búsqueda */
+#input-busqueda:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent);
+    background-color: white;
+}
+
+/* Botón de búsqueda posicionado dentro del campo con animación de destello */
+#btn-buscar {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: white;
+    border: none;
+    border-radius: 25px;
+    height: 50px;
+    padding: 0 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    animation: pulse 2s infinite;
+    overflow: hidden;
+}
+
+/* Animación de pulso para el botón de búsqueda */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 var(--glow-color);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(96, 120, 234, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(96, 120, 234, 0);
+    }
+}
+
+/* Efecto de destello al pasar el mouse por el botón */
+#btn-buscar::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.1) 50%, 
+        rgba(255, 255, 255, 0) 100%);
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#btn-buscar:hover::before {
+    animation: glint 1.5s ease-in-out;
+    opacity: 1;
+}
+
+@keyframes glint {
+    0% {
+        transform: translate(-100%, -100%) rotate(45deg);
+    }
+    100% {
+        transform: translate(100%, 100%) rotate(45deg);
+    }
+}
+
+/* Efecto de elevación al pasar el mouse por el botón */
+#btn-buscar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor de resultados mejorado */
+.contenedor-resultados {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: var(--primary-dark);
+}
+
+/* Tarjetas de resultados con diseño más limpio */
+.resultado {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    max-width: 1000px;
+    margin-bottom: 25px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--primary);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+/* Efecto de elevación al pasar el mouse */
+.resultado:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor para la imagen de portada */
+.portada-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px; 
+    overflow: hidden;
+    background-color: var(--primary); /* Cambiado de var(--primary-light) al mismo color de la tarjeta */
+}
+
+/* Imagen de portada con tamaño fijo para consistencia */
+.portada {
+    width: 100%;
+    height: 330px; 
+    object-fit: contain; /* Cambiado de 'cover' a 'contain' para evitar recortes */
+    object-position: center;
+    transition: var(--transition);
+    padding: 10px; /* Añadido padding para dar espacio alrededor */
+}
+
+.portada:hover {
+    transform: scale(1.05);
+}
+
+/* Información de la película con mejor espaciado */
+.informacion-pelicula {
+    padding: 25px;
+    flex: 1;
+}
+
+.titulo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.titulo:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+    opacity: 0.9;
+}
+
+.fecha-lanzamiento {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.genero,
+.calificacion,
+.numero-votos {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.descripcion {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-top: 15px;
+}
+
+/* Indicador visual de calificación con estrellas */
+.calificacion {
+    display: flex;
+    align-items: center;
+}
+
+.star-rating {
+    margin-left: 10px;
+    color: #ffd700;
+    /* Color dorado para las estrellas */
+}
+
+/* Estilos para el indicador de carga */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--accent);
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 20px;
+        gap: 20px;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    .titulo-buscador {
+        font-size: 2.5rem;
+    }
+
+    .contenedor-buscador h2 {
+        font-size: 1.2rem;
+    }
+
+    .inputs {
+        width: 90%;
+    }
+
+    /* Cambio a diseño vertical para móviles */
+    .resultado {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .portada-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .portada {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+        padding: 10px 0;
+    }
+}
+
+/* Pie de página (nueva adición) */
+.footer {
+    background-color: var(--primary);
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo img {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.footer-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-link:hover {
+    color: var(--text-primary);
+}
+
+.footer-copyright {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
+
+/* Estilos para mensaje de "no hay resultados" */
+.no-resultados {
+    text-align: center;
+    padding: 40px;
+}
+
+.no-results-img {
+    width: 150px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+/* Estilos para mensajes de error */
+.error-message {
+    text-align: center;
+    padding: 40px;
+    color: #e57373;
+    /* Color rojo suave para errores */
+}
+
+/* Estilos para el botón de detalles */
+.btn-detalles {
+    background: var(--primary-light);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-detalles:hover {
+    background: var(--accent);
+}
+
+/* Etiqueta para el tipo de contenido (película/serie) */
+.tipo-badge {
+    background: var(--accent);
+    color: var(--text-primary);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+/* Contenedor para alinear título y etiqueta */
+.header-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}

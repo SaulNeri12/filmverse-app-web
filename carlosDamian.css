@@ -1,0 +1,163 @@
+/* carlosDamian.css - Estilos para el sistema de favoritos */
+
+/* Contador de favoritos en la navegación */
+.contador-favoritos {
+    background-color: #e50914;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+/* Botón de favoritos con estrella */
+.btn-favorito-estrella {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+    z-index: 10;
+}
+
+.btn-favorito-estrella:hover {
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.btn-favorito-estrella .far {
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.btn-favorito-estrella:hover .far {
+    color: #FFD700;
+}
+
+.btn-favorito-estrella .fas {
+    color: #FFD700;
+    font-size: 18px;
+}
+
+/* Panel de favoritos */
+.panel-favoritos {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #141414;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.header-panel-favoritos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #0f0f0f;
+    border-bottom: 1px solid #333;
+}
+
+.header-panel-favoritos h3 {
+    margin: 0;
+    color: white;
+    font-size: 18px;
+}
+
+.btn-cerrar-panel {
+    background: transparent;
+    border: none;
+    color: #999;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.btn-cerrar-panel:hover {
+    color: white;
+}
+
+.contenedor-peliculas-favoritas {
+    padding: 15px;
+    overflow-y: auto;
+    max-height: calc(80vh - 60px); /* Altura máxima menos el header */
+}
+
+.mensaje-sin-favoritos {
+    color: #999;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.mensaje-sin-favoritos p:first-child {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.item-favorito {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background-color: #1f1f1f;
+    transition: background-color 0.3s;
+}
+
+.item-favorito:hover {
+    background-color: #2a2a2a;
+}
+
+.item-favorito img {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.info-favorito {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-favorito h4 {
+    margin: 0;
+    color: white;
+    font-size: 16px;
+}
+
+.btn-quitar-favorito {
+    background: transparent;
+    border: none;
+    color: #FFD700;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+    padding: 5px;
+}
+
+.btn-quitar-favorito:hover {
+    color: #FFA700;
+    transform: scale(1.1);
+}
