@@ -229,6 +229,157 @@
                 });
             });
         });
+        document.addEventListener('DOMContentLoaded', function() {
+    const logoElement = document.querySelector('.logo img');
+    let rainbowModeActive = false;
+    
+    // Función para activar/desactivar el modo rainbow
+    function toggleRainbowMode() {
+        rainbowModeActive = !rainbowModeActive;
+        
+        // Aplicar efecto al logo
+        logoElement.classList.toggle('rainbow-mode');
+        
+        // Aplicar efecto al fondo
+        document.body.classList.toggle('rainbow-background');
+        
+        // Aplicar a la barra de navegación
+        const navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('rainbow-navbar-border');
+        
+        // Aplicar a títulos y textos
+        document.querySelectorAll('.navbar-title, .titulo-buscador, h2, h3, .footer-copyright, .descripcion').forEach(el => {
+            el.classList.toggle('rainbow-text');
+        });
+        
+        // Títulos principales con efecto de brillo
+        document.querySelectorAll('.titulo-buscador, .titulo').forEach(el => {
+            el.classList.toggle('rainbow-glow-text');
+        });
+        
+        // Aplicar a botones y elementos interactivos
+        document.querySelectorAll('#btn-buscar, #btn-siguiente, .btn-enviar, .btn-detalles').forEach(el => {
+            el.classList.toggle('rainbow-button');
+            el.classList.toggle('rainbow-pulse');
+        });
+        
+        // Aplicar a tarjetas de resultados
+        document.querySelectorAll('.resultado').forEach(el => {
+            el.classList.toggle('rainbow-border');
+            el.classList.toggle('rainbow-shadow');
+        });
+        
+        // Aplicar a campos de formulario
+        document.querySelectorAll('.form-control').forEach(el => {
+            el.classList.toggle('rainbow-border');
+        });
+        
+        // Aplicar a iconos
+        document.querySelectorAll('.fas, .fab, .far, .info-icon i, .social-icon i').forEach(el => {
+            el.classList.toggle('rainbow-icon');
+        });
+        
+        // Aplicar a secciones con fondo
+        document.querySelectorAll('.contenedor-buscador, .contacto-section').forEach(el => {
+            el.classList.toggle('rainbow-wave-background');
+        });
+        
+        // Aplicar efecto a estrellas de calificación
+        document.querySelectorAll('.star-rating').forEach(el => {
+            el.classList.toggle('rainbow-icon');
+        });
+        
+        // Para las calificaciones animadas
+        document.querySelectorAll('.calificacion').forEach(el => {
+            el.classList.toggle('rainbow-pulse');
+        });
+        
+        // Para imágenes de portada
+        document.querySelectorAll('.portada').forEach(el => {
+            el.classList.toggle('rainbow-border');
+        });
+        
+        // Guardar el estado en localStorage para mantenerlo entre recargas
+        localStorage.setItem('rainbowMode', rainbowModeActive);
+        
+        // Efecto adicional al activar modo rainbow
+        if (rainbowModeActive) {
+            // Crear efecto de confeti al activar
+            createConfetti();
+            // Cambiar el texto del logo hover para indicar modo activado
+            const logoContainer = document.querySelector('.logo');
+            const rainbowLabel = document.createElement('span');
+            rainbowLabel.classList.add('rainbow-mode-label', 'rainbow-glow-text');
+            rainbowLabel.textContent = "¡MODO FIESTA!";
+            rainbowLabel.style.position = "absolute";
+            rainbowLabel.style.fontSize = "10px";
+            rainbowLabel.style.top = "55px";
+            rainbowLabel.style.left = "50%";
+            rainbowLabel.style.transform = "translateX(-50%)";
+            logoContainer.style.position = "relative";
+            logoContainer.appendChild(rainbowLabel);
+        } else {
+            // Eliminar etiqueta de modo fiesta
+            const rainbowLabel = document.querySelector('.rainbow-mode-label');
+            if (rainbowLabel) {
+                rainbowLabel.remove();
+            }
+        }
+    }
+    
+    // Función para crear efecto de confeti
+    function createConfetti() {
+        for (let i = 0; i < 150; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            
+            // Propiedades aleatorias para cada pieza de confeti
+            const size = Math.random() * 10 + 5;
+            const colors = ['#ff0000', '#ff8800', '#ffff00', '#00ff00', '#0088ff', '#8800ff', '#ff00ff'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            confetti.style.width = `${size}px`;
+            confetti.style.height = `${size}px`;
+            confetti.style.background = color;
+            confetti.style.position = 'fixed';
+            confetti.style.top = '-10px';
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.opacity = Math.random();
+            confetti.style.borderRadius = '50%';
+            confetti.style.zIndex = '1000';
+            
+            // Animación aleatoria
+            const animationDuration = Math.random() * 3 + 2;
+            confetti.style.animation = `fall ${animationDuration}s linear forwards`;
+            
+            // Estilos adicionales para la animación
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fall {
+                    to {
+                        transform: translateY(100vh) rotate(${Math.random() * 360}deg);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(confetti);
+            
+            // Eliminar confeti después de la animación
+            setTimeout(() => {
+                confetti.remove();
+            }, animationDuration * 1000);
+        }
+    }
+    
+    // Asignar evento de clic al logo
+    logoElement.addEventListener('click', toggleRainbowMode);
+    
+    // Comprobar si el modo rainbow estaba activo en una sesión anterior
+    if(localStorage.getItem('rainbowMode') === 'true') {
+        toggleRainbowMode();
+    }
+});
     </script>
 </body>
 </html>
