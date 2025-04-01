@@ -158,7 +158,7 @@ function mostrarNoResultados(consulta) {
     const contenedor = document.querySelector('.contenedor-resultados');
     contenedor.innerHTML = `
         <div class="no-resultados">
-            <img src="imagenes/no-results.png" alt="No hay resultados" class="no-results-img">
+            <img src="imagenes/no-image.png" alt="No hay resultados" class="no-results-img">
             <h2>No se encontraron resultados para "${consulta}"</h2>
             <p>Intenta con otro término de búsqueda</p>
         </div>
