@@ -57,7 +57,6 @@ function mostrarResultados(resultados) {
     });
 }
 
-
 function getGeneroNombre(genreId) {
     const generos = {
         28: 'Acción',
