@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     botonBuscar.addEventListener('click', () => {
         const consulta = campoBusqueda.value.trim();
         if (consulta) {
+            document.querySelector(".paginacion-botones").style.display = "flex";
             mostrarCargando();
             contenedor.innerHTML = "";
             buscarPelicula(consulta);
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') {
             const consulta = campoBusqueda.value.trim();
             if (consulta) {
+                document.querySelector(".paginacion-botones").style.display = "flex";
                 mostrarCargando();
                 contenedor.innerHTML = "";
                 buscarPelicula(consulta);
@@ -240,6 +242,7 @@ function getGeneroNombre(genreId) {
     return generos[genreId] || 'Desconocido';
 }
 
+// manejador de evento cuando se presiona el boton "Ver Mas"
 document.querySelector("#btn-siguiente").addEventListener("click", async () => {
     const contenedor = document.querySelector('.contenedor-resultados');
 
