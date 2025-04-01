@@ -57,6 +57,84 @@
         </div>
     </section>
     
+    <!-- Nueva sección de contacto -->
+    <section class="contacto-section" id="contacto">
+        <div class="contacto-container">
+            <div class="contacto-info">
+                <h2>Contacto</h2>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Dirección</h3>
+                        <p>Avenida del Cine 123, Madrid, España</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Teléfono</h3>
+                        <p><a href="tel:+34912345678">+34 912 345 678</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@filmverse.com">info@filmverse.com</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Horario de Atención</h3>
+                        <p>Lunes - Viernes: 9:00 AM - 6:00 PM</p>
+                        <p>Sábado: 10:00 AM - 2:00 PM</p>
+                    </div>
+                </div>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="contacto-form">
+                <h2>Envíanos un mensaje</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" id="asunto" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3708.823403386567!2d-109.96934506799103!3d27.491251010039488!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86c83e14e089d3d1%3A0x4a2eeb6b6e3e9e83!2sItson!5e0!3m2!1ses!2smx!4v1743535731853!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    
     <!-- Pie de página con enlaces y créditos -->
     <footer class="footer">
         <div class="footer-content">
@@ -79,5 +157,78 @@
     <script src="index.js"></script>
     <script src="favoritos.js"></script>
     <script src="popular.js"></script>
+    <script>
+        // Script para mejorar la interactividad del botón de búsqueda
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnBuscar = document.getElementById('btn-buscar');
+            const inputBusqueda = document.getElementById('input-busqueda');
+            
+            // Añadimos efecto de sonido al hacer clic en el botón
+            btnBuscar.addEventListener('mousedown', function() {
+                // Efecto visual adicional
+                this.style.transform = 'scale(0.95)';
+                
+                // Tiempo para simular el clic
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+            
+            // Efecto de enfoque al hacer clic en el campo de búsqueda
+            inputBusqueda.addEventListener('focus', function() {
+                btnBuscar.classList.add('btn-active');
+            });
+            
+            inputBusqueda.addEventListener('blur', function() {
+                btnBuscar.classList.remove('btn-active');
+            });
+            
+            // Permitir búsqueda al presionar Enter en el campo de búsqueda
+            inputBusqueda.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    btnBuscar.click();
+                }
+            });
+            
+            // Formulario de contacto
+            const contactForm = document.getElementById('contact-form');
+            if(contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Simulación de envío
+                    const submitBtn = this.querySelector('.btn-enviar');
+                    const originalText = submitBtn.textContent;
+                    
+                    submitBtn.textContent = 'Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
+                        contactForm.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 1500);
+                });
+            }
+            
+            // Navegación suave para los enlaces de contacto
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, // Ajuste para la barra de navegación
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
