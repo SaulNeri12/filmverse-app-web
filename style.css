@@ -444,8 +444,6 @@ body {
 }
 
 .no-results-img {
-    display: flex;
-    margin: 0 auto;
     width: 150px;
     margin-bottom: 20px;
     opacity: 0.7;
@@ -876,3 +874,220 @@ textarea.form-control {
     content: " *";
     color: #e57373;
 }
+/* Efecto Rainbow, es para que tenga un secreto oculto la pagina */
+
+/* Efecto Rainbow para el logo */
+@keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  
+  .rainbow-mode {
+    animation: rainbow 3s linear infinite;
+  }
+  
+  /* Efecto para elementos de la página en modo rainbow */
+  .rainbow-background {
+    transition: background-color 2s ease;
+    animation: backgroundRainbow 10s linear infinite;
+  }
+  
+  @keyframes backgroundRainbow {
+    0% { background-color: var(--primary-dark); }
+    20% { background-color: #1a171b; } /* Tono morado oscuro */
+    40% { background-color: #171a26; } /* Tono azul oscuro */
+    60% { background-color: #172621; } /* Tono verde oscuro */
+    80% { background-color: #261717; } /* Tono rojo oscuro */
+    100% { background-color: var(--primary-dark); }
+  }
+  
+  /* Para elementos de texto en modo rainbow */
+  .rainbow-text {
+    animation: textRainbow 5s linear infinite;
+  }
+  
+  @keyframes textRainbow {
+    0% { color: var(--text-primary); }
+    25% { color: #ff9aa2; } /* Rosa claro */
+    50% { color: #c1e1dc; } /* Azul claro */
+    75% { color: #ffdac1; } /* Naranja claro */
+    100% { color: var(--text-primary); }
+  }
+  
+  /* Efecto de brillo para botones en modo rainbow */
+  .rainbow-button {
+    animation: buttonRainbow 4s linear infinite;
+  }
+  
+  @keyframes buttonRainbow {
+    0% { background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); }
+    25% { background: linear-gradient(to right, #ff5f6d, #ffc371); } /* Rojo a amarillo */
+    50% { background: linear-gradient(to right, #4facfe, #00f2fe); } /* Azul a cian */
+    75% { background: linear-gradient(to right, #7f7fd5, #91eae4); } /* Morado a turquesa */
+    100% { background: linear-gradient(to right, var(--gradient-start), var(--gradient-end)); }
+  }
+@keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  
+  @keyframes rainbowBorder {
+    0% { border-color: #ff0000; }
+    16.6% { border-color: #ff8800; }
+    33.3% { border-color: #ffff00; }
+    50% { border-color: #00ff00; }
+    66.6% { border-color: #0088ff; }
+    83.3% { border-color: #8800ff; }
+    100% { border-color: #ff0000; }
+  }
+  
+  @keyframes rainbowShadow {
+    0% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.7); }
+    16.6% { box-shadow: 0 0 15px rgba(255, 136, 0, 0.7); }
+    33.3% { box-shadow: 0 0 15px rgba(255, 255, 0, 0.7); }
+    50% { box-shadow: 0 0 15px rgba(0, 255, 0, 0.7); }
+    66.6% { box-shadow: 0 0 15px rgba(0, 136, 255, 0.7); }
+    83.3% { box-shadow: 0 0 15px rgba(136, 0, 255, 0.7); }
+    100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.7); }
+  }
+  
+  .rainbow-mode {
+    animation: rainbow 3s linear infinite;
+  }
+  
+  /* Modo rainbow para el fondo de la página */
+  .rainbow-background {
+    transition: background-color 2s ease;
+    animation: backgroundRainbow 10s linear infinite;
+  }
+  
+  @keyframes backgroundRainbow {
+    0% { background-color: var(--primary-dark); }
+    20% { background-color: #1a171b; } 
+    40% { background-color: #171a26; } 
+    60% { background-color: #172621; } 
+    80% { background-color: #261717; } 
+    100% { background-color: var(--primary-dark); }
+  }
+  
+  /* Para textos en modo rainbow */
+  .rainbow-text {
+    animation: textRainbow 5s linear infinite;
+  }
+  
+  @keyframes textRainbow {
+    0% { color: var(--text-primary); }
+    25% { color: #ff9aa2; } 
+    50% { color: #c1e1dc; } 
+    75% { color: #ffdac1; } 
+    100% { color: var(--text-primary); }
+  }
+  
+  /* Efecto de brillo para botones en modo rainbow */
+  .rainbow-button {
+    animation: buttonRainbow 4s linear infinite;
+  }
+  
+  @keyframes buttonRainbow {
+    0% { background: linear-gradient(to right, #7367f0, #ce9ffc); }
+    25% { background: linear-gradient(to right, #ff5f6d, #ffc371); }
+    50% { background: linear-gradient(to right, #4facfe, #00f2fe); }
+    75% { background: linear-gradient(to right, #7f7fd5, #91eae4); }
+    100% { background: linear-gradient(to right, #7367f0, #ce9ffc); }
+  }
+  
+  /* Bordes arcoíris para tarjetas y contenedores */
+  .rainbow-border {
+    border: 2px solid #ff0000;
+    animation: rainbowBorder 3s linear infinite;
+  }
+  
+  /* Sombra arcoíris para elementos destacados */
+  .rainbow-shadow {
+    animation: rainbowShadow 4s linear infinite;
+  }
+  
+  /* Efecto de borde inferior arcoíris para navbar */
+  .rainbow-navbar-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8800ff);
+    animation: rainbow 3s linear infinite;
+  }
+  
+  /* Efecto de fondo con ondas de colores */
+  .rainbow-wave-background {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .rainbow-wave-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+      rgba(255, 0, 0, 0.1) 0%,
+      rgba(255, 154, 0, 0.1) 10%,
+      rgba(208, 222, 33, 0.1) 20%,
+      rgba(79, 220, 74, 0.1) 30%,
+      rgba(63, 218, 216, 0.1) 40%,
+      rgba(47, 201, 226, 0.1) 50%,
+      rgba(28, 127, 238, 0.1) 60%,
+      rgba(95, 21, 242, 0.1) 70%,
+      rgba(186, 12, 248, 0.1) 80%,
+      rgba(251, 7, 217, 0.1) 90%,
+      rgba(255, 0, 0, 0.1) 100%);
+    z-index: -1;
+    animation: rainbow 10s linear infinite;
+  }
+  
+  /* Efecto pulsante para elementos interactivos */
+  .rainbow-pulse {
+    animation: rainbowPulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes rainbowPulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+    25% { box-shadow: 0 0 0 10px rgba(255, 136, 0, 0); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
+    75% { box-shadow: 0 0 0 10px rgba(0, 136, 255, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+  }
+  
+  /* Texto con efecto de brillo arcoíris */
+  .rainbow-glow-text {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    animation: rainbowTextGlow 6s linear infinite;
+  }
+  
+  @keyframes rainbowTextGlow {
+    0% { text-shadow: 0 0 5px rgba(255, 0, 0, 0.7); }
+    16.6% { text-shadow: 0 0 5px rgba(255, 136, 0, 0.7); }
+    33.3% { text-shadow: 0 0 5px rgba(255, 255, 0, 0.7); }
+    50% { text-shadow: 0 0 5px rgba(0, 255, 0, 0.7); }
+    66.6% { text-shadow: 0 0 5px rgba(0, 136, 255, 0.7); }
+    83.3% { text-shadow: 0 0 5px rgba(136, 0, 255, 0.7); }
+    100% { text-shadow: 0 0 5px rgba(255, 0, 0, 0.7); }
+  }
+  
+  /* Iconos con colores arcoíris */
+  .rainbow-icon {
+    animation: iconRainbow 4s linear infinite;
+  }
+  
+  @keyframes iconRainbow {
+    0% { color: #ff0000; }
+    16.6% { color: #ff8800; }
+    33.3% { color: #ffff00; }
+    50% { color: #00ff00; }
+    66.6% { color: #0088ff; }
+    83.3% { color: #8800ff; }
+    100% { color: #ff0000; }
+  }

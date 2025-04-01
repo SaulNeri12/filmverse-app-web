@@ -1,9 +1,12 @@
-
 const API_KEY = 'c7d88753768eedf47e4b16a8d964b98d';
 const API_URL = 'https://api.themoviedb.org/3/search/multi?api_key=' + API_KEY + '&language=es-ES&query=';
 
 export function mostrarResultados(resultados, limpiarResultados = false) {
     const contenedor = document.querySelector('.contenedor-resultados');
+    if (!contenedor) {
+        console.error("El contenedor de resultados no existe.");
+        return;
+    }
     
     if (limpiarResultados) {
         contenedor.innerHTML = '';
@@ -119,18 +122,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Buscar al hacer clic en el botón
     botonBuscar.addEventListener('click', () => {
         const consulta = campoBusqueda.value.trim();
-        if (consulta) {
-            document.querySelector(".paginacion-botones").style.display = "flex";
-            mostrarCargando();
-            contenedor.innerHTML = "";
-            buscarPelicula(consulta);
+        if (!consulta) {
+            console.error("La consulta está vacía.");
+            return;
         }
+        document.querySelector(".paginacion-botones").style.display = "flex";
+        mostrarCargando();
+        contenedor.innerHTML = "";
+        buscarPelicula(consulta);
     });
 
     // Buscar al presionar Enter en el campo de búsqueda
     campoBusqueda.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             const consulta = campoBusqueda.value.trim();
+            if (!consulta) {
+                console.error("La consulta está vacía.");
+                return;
+            }
             if (consulta) {
                 document.querySelector(".paginacion-botones").style.display = "flex";
                 mostrarCargando();
@@ -227,6 +236,7 @@ export async function buscarPelicula(consulta, pagina = 1) {
 
         const respuesta = await fetch(urlObjetivo);
         const datos = await respuesta.json();
+        console.log(datos);
 
         if (datos.results && datos.results.length > 0) {
             // se muestran los resultados de busqueda pero no se eliminan los que ya 
